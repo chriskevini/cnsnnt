@@ -1,49 +1,76 @@
-# Hub
+# ⚔️ CNSNNT Highlander Edition: *There Can Be Only One* ⚔️
 
-The official Espanso's package repository
+>"Why waste time type lot letter when **few letter do trick**."
 
-See [the website](https://hub.espanso.org/), and the docs containing [additional information on Packages](https://espanso.org/docs/packages/basics/)
+This package is a set of **zero-collision** shorthand triggers, allowing you to instantly expand common English words by typing (mostly) only their consonants. This "Highlander" edition ensures that every trigger maps to a single, most-common word, guaranteeing maximum accuracy.
 
-## Review (Contributing new/update packages)
+>"**60% of the time, it works every time.**"
 
-To review packages and merge policies, we met in Discord in our monthly meeting and talked about the subject. This is what we agreed that would be a in-between solution.
+<small>**Looking for more flexibility?** For a package where you can choose between multiple possible words for a single trigger, see [CNSNNT Standard Edition](https://hub.espanso.org/cnsnnt).</small>
 
-To be clear about the implications of using scripts in packages. We need to double check malicious or misinterpreted packages, so they don't cause damage (at least not permanent) in the point of reviewing PR. For example, nobody would want to have a trigger `a` that launches a command `rm -rf /`. So, in order to prevent it from happening:
 
-- we have a CI that does some easy ground checks
-- we double check every PR with a maintainer, just to be sure no mistakes are made
-- we don't merge anything we don't understand
-- we possibly reject packages that cause permanent damage to the system to prevent users of that packages to mistakenly cause trouble on their pcs.
-- depending in a case by case scenario, we might allow to accept removing files in certain folders, for example `/tmp/`
-- even if the package does not contain scripts, it needs a human reviewer nonetheless: it might have content that we don't want to be part of distributing, such as offensive/hateful language or images
+## 🎯 Core Philosophy: Maximum Efficiency
 
-The process of creating this review policy can be tracked in [#98](https://github.com/espanso/hub/issues/98)
+The system is engineered for speed by employing a few simple substitution rules:
 
-## Run the package validation locally
+* **Vowel Skipping:** Most vowels are omitted (`btwn` &rarr; `between`).
+* **Repeated Letter Compression:** Skip redundant letters (`acs` &rarr; `access`).
+* **Silent Letter Removal:** Letters that don't affect pronunciation are dropped (`bkbn` &rarr; `backbone`).
+* **Phonetic Substitution:** Type it how it sounds like (`tlfn` &rarr; `telephone`, `bjt` &rarr; `budget`).
 
-Sometimes it's useful to run the validation process locally. To do so, you have
-to make the following steps:
 
-- have python 3.12 installed and make an environment in your local folder. We
-use [`uv`](https://github.com/astral-sh/uv) often, and if you don't know it yet
-, you should!
+## 💡 Usage
 
-```bash
-uv venv --python 3.12
+While typing, simply input the consonant-based trigger. **Espanso** will instantly expand it into the full word.
+
+* To **undo** an expansion, just press **backspace** immediately after it appears.
+
+### Disambiguation
+
+The first letter can be inputted to distinguish between words with similar consonant structures:
+
+| Trigger | Expansion |
+| :--- | :--- |
+| **a**dtcn | **a**ddiction |
+| **e**dtcn | **e**ducation |
+
+
+## 📖 Examples
+
+
+| Trigger | Expansion |
+| :--- | :--- |
+| `hwvr` | `however` |
+| `btwn` | `between` |
+| `blv` | `believe` |
+| `nvlp` | `envelope` |
+| `ftbl` | `football` |
+| `gnrl` | `general` |
+| `gnrll` | `generally` |
+| `rqr` | `require` |
+| `rqrd` | `required` |
+| `nwn` | `known` |
+| `nnwn` | `unknown` |
+| `mprr` | `emperor` |
+| `brj` | `bridge` |
+| `flsf` | `philosophy` |
+| `flpns` | `philippines` |
+| `sftwr ngnr` | `software engineer` |
+| `xtrml qkl` | `extremely quickly` |
+| `imgn the psblts` | `imagine the possibilities` |
+
+
+## 🚀 Installation
+
+Make sure you have already installed **[Espanso](https://espanso.org/install/)** first.
+
+```sh
+espanso install cnsnnt-highlander
 ```
 
-- install the `pyyaml` dependency
+## 🤝 Contributing
 
-```bash
-uv pip install pyyaml
-```
+If you think a trigger should expand to a different word or have ideas for new, efficient triggers, please contribute!
 
-- run the `main.py` *from the root folder* (because the script uses `glob` to
-find what packages are in the `packages/` folder)
-
-```bash
-uv run .github/scripts/validate/main.py
-```
-
-- wait until you have the results!
-
+* Create a **pull request** with your suggested changes.
+* **Open an issue** to discuss potential additions or improvements.
